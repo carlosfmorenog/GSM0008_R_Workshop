@@ -67,8 +67,8 @@
 
 \begin{frame}
 \title{Introduction to R Workshop \\ (Session 3)}
-\author{Dr Carlos Moreno-Garcia}{\includegraphics[scale=.4]{figure/rgu.jpg}}
-\institute{School of Computing Science and Digital Media \\  Robert Gordon University }
+\author{Dr Carlos Moreno-García}{\includegraphics[scale=.4]{figure/rgu.jpg}}
+\institute{School of Computing \\  Robert Gordon University }
 \maketitle
 \end{frame}
 
@@ -78,12 +78,14 @@
 \includegraphics[scale=.3]{figure/rgu.jpg}
 \end{textblock*}}
 
-\section{Outline}
-\frame{\tableofcontents[pausesections]}\frametitle{Outline}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+% \section{Outline}
+\frame{\tableofcontents[pausesections]}
+\frametitle{Outline}
 
-\section{Machine Learning Overview}
+
+\section{Machine Learning}
 \AtBeginSection[]
   {
      \begin{frame}<beamer>
@@ -91,10 +93,13 @@
      \tableofcontents[currentsection]
      \end{frame}
   }
-  
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{Overview}
 
-\begin{frame}[fragile] \frametitle{Overview}
+\begin{frame}[fragile] \frametitle{Machine Learning - Overview}
 
 \begin{center}
 \begin{figure}[hb]
@@ -265,8 +270,7 @@ Regressions with ggplot
 require(ggplot2)
 x <- seq(1:10)
 y <- 2*x +(x*x)
-df <- data.frame(X=x, 
-                 Y=y)
+df <- data.frame(X=x, Y=y)
 
 @
 
@@ -323,6 +327,8 @@ p
 
 <<tidy=FALSE,idy.opts=list(blank=FALSE,width=50,width.cutoff=60),fig.width=6,fig.height=4,out.width='.8\\linewidth',echo=FALSE,eval=TRUE>>=
 
+options(warn=-1) # don't print warning message 
+
 library(MASS)
 require(ggplot2)
 data(cats)
@@ -372,9 +378,8 @@ cl=(kmeans(m,3))
 df$cluster=factor(cl$cluster)
 centers=as.data.frame(cl$centers)
 p <- ggplot(data=df, aes(x=Petal.Length, 
-        y=Petal.Width,color=cluster),size=.2,alpha=.4) + 
-     geom_point() + 
-     geom_point(data=centers, 
+        y=Petal.Width,color=cluster),size=.2,alpha=.4) 
+     + geom_point() + geom_point(data=centers, 
                 aes(x=V1,y=V2, color='Center')) +
      geom_point(data=centers, 
                 aes(x=V1,y=V2, color='Center'), 

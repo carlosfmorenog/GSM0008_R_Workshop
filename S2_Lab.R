@@ -73,5 +73,3 @@ data(iris)
 
 # TO DO: Save the last plot as a jpg/jpeg image.
 
-
-
